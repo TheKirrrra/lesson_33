@@ -1,20 +1,20 @@
 package homework_33;
 
+import java.util.Random;
+import java.util.Scanner;
+
 public class Remote {
 
-    private TV tv;
+    Random random = new Random();
 
-    public TV getTV() {
-        return tv;
-    }
-    private Programm[] programms;
-
-    public void setTV(TV tv) {
-        this.tv = tv;
+    private Scanner scanner = new Scanner(System.in);
+    public int ON(int rnd){
+        rnd = random.nextInt(5);
+        return rnd;
     }
 
-    public void on(int number) {
-        System.out.println("Включить канал номер " + number);
-        Channel.randomProgramm(programms);
+    public int inputChannel() {
+        System.out.println("Доступны каналы - 1-5\nПрекратить работу - 0");
+        return scanner.nextInt();
     }
 }

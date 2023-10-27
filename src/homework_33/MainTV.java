@@ -4,35 +4,50 @@ package homework_33;
 
 public class MainTV {
     public static void main(String[] args) {
-        TV tv = new TV ("Samsung");
+
         Remote remote = new Remote();
 
+        Channel[] channelList = new Channel[6];
 
-        Programm programm1 = new Programm("Пока все дома");
-        Programm programm2 = new Programm("КВН");
-        Programm programm3 = new Programm("Окна");
-        Programm programm4 = new Programm("Сериал Бригада");
-        Programm programm5 = new Programm("Кино ГП и ФК");
-        Programm programm6 = new Programm("Новости");
+        String[] programList ={"Film1","Serial1","Show1","News1","Music1"};
+        channelList[1]=new Channel(programList);
 
-        Channel channel1 = new Channel("MTV", 1);
-        Channel channel2 = new Channel("1+1", 2);
-        Channel channel3 = new Channel("ТНТ", 3);
-        Channel channel4 = new Channel("СТС", 4);
-        Channel channel5 = new Channel("Ютуб", 5);
+        programList = new String[]{"Film2", "Serial2", "Show2", "News2", "Music2"};
+        channelList[2]=new Channel(programList);
 
+        programList = new String[]{"Film3", "Serial3", "Show3", "News3", "Music3"};
+        channelList[3]=new Channel(programList);
 
+        programList = new String[]{"Film4", "Serial4", "Show4", "News4", "Music4"};
+        channelList[4]=new Channel(programList);
 
-        tv.addChannel(channel1);
-        tv.addChannel(channel2);
-        tv.addChannel(channel3);
-        tv.addChannel(channel4);
-        tv.addChannel(channel5);
+        programList = new String[]{"Film5", "Serial5", "Show5", "News5", "Music5"};
+        channelList[5]=new Channel(programList);
 
 
 
 
-        tv.print();
+        while(true)
+        {
+            int channelNumber = remote.inputChannel();
+
+            if (channelNumber == 0) {
+                break;
+            }
+
+            if (channelNumber >5 ){
+                System.out.println("No Channel");
+                continue;
+            }
+
+            int programmNumber = remote.ON(channelNumber);
+
+
+            System.out.println( "Channel No: " + channelNumber +
+                    "\nProgram Name: " + channelList[channelNumber].getRandomProgram(programmNumber));
+
+
+        }
 
 
 
